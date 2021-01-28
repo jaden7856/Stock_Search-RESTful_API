@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+    StockUp
+{% endblock %}
+
+{% block masthead %}
+    <header id="masthead" class="masthead text-white text-center">
+        <div id="main" class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">당신이 원하는 종목을 검색해주세요!</h1>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form>
+                        <div class="form-row">
+                            <form name="title" action="/yahoo_stock/yahoo_stock/spiders/stock.py" method="get">
+                                <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                    {% csrf_token %}
+{#                                    {{ form.as_table }}#}
+                                    <input type="text" name="searched_symbol" class="form-control form-control-lg"
+                                           placeholder="Search for company symbols">
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <button type="submit" class="btn btn-block btn-lg btn-primary">
+                                        Search
+                                    </button>
+                                </div>
+                                <li> ex) AAPL(APPLE),&nbsp;&nbsp;&nbsp;TSLA(TESLA),&nbsp;&nbsp;&nbsp;NFLX(NETFLIX),&nbsp;&nbsp;&nbsp;005930.KS(SAMSUNG)</li>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block grid %}
+    <section id="gird" class="features-icons bg-light text-center">
+        <div id="grid" class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon d-flex">
+                            <i class="icon-layers m-auto text-primary"></i>
+                        </div>
+                        <h3>검색 결과</h3>
+                        <p class="lead mb-0">현재 검색 결과 간단 정보</p>
+                    </div>
+                </div>
+                {% for stock in stocks %}
+                <div class="col-lg-4">
+                    <div class="features-icons-icon d-flex"></div>
+                        <p class="lead mb-0">Symbol : {{ stocks.symbol }}</p>
+                        <p class="lead mb-0">Name : {{ stocks.name }}</p>
+                        <p class="lead mb-0">Price : {{ stocks.price }}</p>
+                        <p class="lead mb-0">Open : {{ stocks.open }}</p>
+                        <p class="lead mb-0">Day_Min : {{ stocks.day_min }}</p>
+                        <p class="lead mb-0">Day_Max : {{ stocks.day_max }}</p>
+                        <p class="lead mb-0">Volume : {{ stocks.volume }}</p>
+{#                    <p class="lead mb-0">Modify_Date : {{ stock.modify_date }}</p>#}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
