@@ -20,7 +20,6 @@ from mysite.views import HomeView, SearchLV
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeView.as_view(), name='home'),
-    path('', SearchLV.as_view(), name='event'),
+    path('', SearchLV.as_view(), name='home'),
     path('stock/', include('stock.urls', namespace='stock')),
 ]

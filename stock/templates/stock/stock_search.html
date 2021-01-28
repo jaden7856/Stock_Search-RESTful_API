@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Stock Searched List{% endblock %}
+
+{% block masthead %}
+    <div id="masthead">
+        <td>
+            <tr><h2>검색 한 종목</h2></tr>
+{#            {% for stock in stocks %}#}
+                <li><a href="">Symbol : {{ stocks.symbol }}</a></li>
+                <li>Name : {{ stock.name }}</li>
+                <li>Price : {{ stock.price }}</li>
+                <li>Open : {{ stock.open }}</li>
+                <li>Day_Min : {{ stock.day_min }}</li>
+                <li>Day_Max : {{ stock.day_max }}</li>
+                <li>Volume : {{ stock.volume }}</li>
+{#            {% endfor %}#}
+        </td>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -10,12 +10,12 @@ class YahooStockPipeline(object):
             os.path.abspath('C:/Users/User/Desktop/DataStudy/Project/django_stock_web/db.sqlite3'))
         self.cur = self.con.cursor()
 
-        self.createTable()
+        # self.createTable()
 
-    def createTable(self):
-        self.cur.execute('''CREATE TABLE IF NOT EXISTS blog_post(
-        symbol TEXT PRIMARY KEY, name TEXT, price TEXT, open TEXT, day_min TEXT, day_max TEXT, 
-        volume TEXT, modify_date TEXT)''')
+    # def createTable(self):
+    #     self.cur.execute('''CREATE TABLE IF NOT EXISTS blog_post(
+    #     symbol TEXT PRIMARY KEY, name TEXT, price TEXT, open TEXT, day_min TEXT, day_max TEXT,
+    #     volume TEXT, modify_date TEXT)''')
 
     # Data processing
     def process_item(self, item, spider):

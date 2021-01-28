@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, FormView
 from mysite.forms import PostSearchForm
 from django.shortcuts import render
+
 import os
 
 from stock.models import Post
@@ -19,7 +20,3 @@ class SearchLV(FormView):
         os.system("scrapy crawl stock")
 
         return super().form_valid(form)
-
-    def stock_db(self, request):
-        stock = Post.objects.all().order_by('-id')[0]
-        return render(self.request, self.template_name, {'stocks': stock})

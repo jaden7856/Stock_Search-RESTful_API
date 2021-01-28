@@ -15,7 +15,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
                     <form>
                         <div class="form-row">
-                            <form name="title" action="/yahoo_stock/yahoo_stock/spiders/stock.py" method="get">
+                            <form name="title" action="/cgi-bin/yahoo_stock/yahoo_stock/spiders/stock.py" method="get">
                                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                                     {% csrf_token %}
 {#                                    {{ form.as_table }}#}
@@ -50,19 +50,21 @@
                         <p class="lead mb-0">현재 검색 결과 간단 정보</p>
                     </div>
                 </div>
-                {% for stock in stocks %}
+                {% if sotcks %}
                 <div class="col-lg-4">
                     <div class="features-icons-icon d-flex"></div>
-                        <p class="lead mb-0">Symbol : {{ stocks.symbol }}</p>
-                        <p class="lead mb-0">Name : {{ stocks.name }}</p>
-                        <p class="lead mb-0">Price : {{ stocks.price }}</p>
-                        <p class="lead mb-0">Open : {{ stocks.open }}</p>
-                        <p class="lead mb-0">Day_Min : {{ stocks.day_min }}</p>
-                        <p class="lead mb-0">Day_Max : {{ stocks.day_max }}</p>
-                        <p class="lead mb-0">Volume : {{ stocks.volume }}</p>
+                    {% for stock in stocks %}
+                        <p class="lead mb-0">Symbol : {{ stock.symbol }}</p>
+                        <p class="lead mb-0">Name : {{ stock.name }}</p>
+                        <p class="lead mb-0">Price : {{ stock.price }}</p>
+                        <p class="lead mb-0">Open : {{ stock.open }}</p>
+                        <p class="lead mb-0">Day_Min : {{ stock.day_min }}</p>
+                        <p class="lead mb-0">Day_Max : {{ stock.day_max }}</p>
+                        <p class="lead mb-0">Volume : {{ stock.volume }}</p>
 {#                    <p class="lead mb-0">Modify_Date : {{ stock.modify_date }}</p>#}
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>
