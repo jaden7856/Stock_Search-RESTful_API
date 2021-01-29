@@ -6,10 +6,8 @@ import cgi
 
 # 웹 검색한 text
 form = cgi.FieldStorage()
-searched = form.getvalue('searched_symbol')
-
-symbol_name = searched
-
+#symbol_name = form.getvalue('symbol')
+symbol_name = 'AAPL'
 
 def symbol_edit(nam: str) -> str:
     sym = re.search(r'\([^)]*\)', str(nam))

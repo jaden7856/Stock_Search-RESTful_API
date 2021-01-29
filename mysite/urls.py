@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mysite.views import HomeView, SearchLV
+from mysite.views import form_valid, stock_db
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', SearchLV.as_view(), name='home'),
+    path('', stock_db, name='home'),
+    path('search/', form_valid, name='searched'),
+
     path('stock/', include('stock.urls', namespace='stock')),
 ]

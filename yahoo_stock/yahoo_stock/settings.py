@@ -6,6 +6,13 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import sys
+import os
+import django
+
+# sys.path.append('../mysite')
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+# django.setup()
 
 BOT_NAME = 'yahoo_stock'
 

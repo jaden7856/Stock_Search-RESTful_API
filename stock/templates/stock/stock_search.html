@@ -4,18 +4,33 @@
 
 {% block masthead %}
     <div id="masthead">
-        <td>
-            <tr><h2>검색 한 종목</h2></tr>
-{#            {% for stock in stocks %}#}
-                <li><a href="">Symbol : {{ stocks.symbol }}</a></li>
-                <li>Name : {{ stock.name }}</li>
-                <li>Price : {{ stock.price }}</li>
-                <li>Open : {{ stock.open }}</li>
-                <li>Day_Min : {{ stock.day_min }}</li>
-                <li>Day_Max : {{ stock.day_max }}</li>
-                <li>Volume : {{ stock.volume }}</li>
-{#            {% endfor %}#}
-        </td>
+        <tr>
+            <td><h3>검색 한 종목</h3></td>
+            {% for stock in stocks %}
+                <form action="detail" method="post">
+                    <input type="submit" name="name" value="{{ stock.name }}"
+                           onclick="location.href='{% url 'stock:stock_detail' %}'">
+                </form>
+                <br><br>
+            {% endfor %}
+        </tr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

@@ -1,9 +1,9 @@
 from django.urls import path
-from stock.views import StockLV, StockDV
+from stock.views import StockLV, StockDV, stockDB
 
 app_name = 'stock'
 
 urlpatterns = [
-    path('', StockLV.as_view(), name='stock_list'),
-    path('<int:pk>', StockDV.as_view(), name='stock_detail'),
+    path('', stockDB, name='stock_list'),
+    path('detail', StockDV.stockDB_detail, name='stock_detail'),
 ]

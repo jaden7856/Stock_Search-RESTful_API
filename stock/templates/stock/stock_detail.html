@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Stock Searched List{% endblock %}
+
+{% block masthead %}
+    <div id="masthead">
+        <tr>
+            <td><h3>종목 상세</h3></td>
+                <li>Symbol : {{ stocks.symbol }}</li>
+                <li>Symbol : {{ stocks.name }}</li>
+                <li>Price : {{ stocks.price }}</li>
+                <li>Open : {{ stocks.open }}</li>
+                <li>Day_Min : {{ stocks.day_min }}</li>
+                <li>Day_Max : {{ stocks.day_max }}</li>
+                <li>Volume : {{ stocks.volume }}</li>
+        </tr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
