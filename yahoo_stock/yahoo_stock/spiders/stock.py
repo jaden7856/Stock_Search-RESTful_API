@@ -4,9 +4,9 @@ from yahoo_stock.items import YahooStockItem
 import cgi
 
 
-# 웹 검색한 text
-form = cgi.FieldStorage()
-#symbol_name = form.getvalue('symbol')
+# # 웹 검색한 text
+# form = cgi.FieldStorage()
+# symbol_name = form.getvalue('symbol')
 symbol_name = 'AAPL'
 
 def symbol_edit(nam: str) -> str:
